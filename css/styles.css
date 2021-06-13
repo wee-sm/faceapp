@@ -1,0 +1,88 @@
+@import url(https://fonts.googleapis.com/css?family=Source + Code + Pro:400, 500);
+@import 'font-awesome/css/font-awesome.min.css';
+/* @import url(http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css); */
+
+@keyframes roll {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+        transform: translate(-150%, -50%) rotate(-90deg) scale(0.3);
+        box-shadow: none;
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+    }
+}
+
+body {
+    background: #1abc9c;
+}
+* {
+    box-sizing: border-box;
+}
+.image-wrapper {
+    animation: roll 1.5s;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 25px;
+    background: #16a085;
+    border-radius: 50%;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+.image-wrapper:active #img_result {
+    margin-top: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.image-wrapper #img_result {
+    cursor: pointer;
+    margin: 0;
+    position: relative;
+    background: #1abc9c;
+    display: block;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+    color: rgba(0, 0, 0, 0);
+    transition: box-shadow 0.3s, margin 0.3s, background-image 1.5s;
+    overflow: hidden;
+}
+.image-wrapper #img_result.no-image:before {
+    font-family: 'FontAwesome';
+    content: '\f030';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    color: #fff;
+    font-size: 48px;
+    opacity: 0.8;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 0px 5px rgba(0, 0, 0, 0.4);
+}
+
+#img_result > img,
+#img_result > canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    /* object-fit: cover; */
+}
+
+#loading_container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: visibility 0s, opacity 0.5s linear;
+}
+#analysis_container {
+    /* display: none; */
+}

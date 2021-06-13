@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="css/loading.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="loading_container">
+            <div class="loading">Loading&#8230;</div>
+        </div>
+        <div id="analysis_container">
+            <div class="image-wrapper">
+                <div class="no-image" id="img_result">
+                    <img />
+                </div>
+            </div>
+            <div class="results-wapper">
+                <div id="result-message"></div>
+                <div id="label-container"></div>
+            </div>
+        </div>
+
+        <script src="./js/script.js"></script>
+        <script src="./js/face_detection.js"></script>
+        <script src="./js/face_analyzation.js"></script>
+        <script type="module" src="./js/module.js"></script>
+    </body>
+</html>
