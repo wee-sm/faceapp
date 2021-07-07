@@ -1,0 +1,3 @@
+User-agent: *
+Allow:/
+Sitemap: https://cranky-meninsky-decd8c.netlify.app/sitemap.xml
