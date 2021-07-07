@@ -1,30 +1,39 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="stylesheet" href="css/loading.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60e60fd4ec4f5709"></script>
+
     </head>
     <body>
         <div id="loading_container">
             <div class="loading">Loading&#8230;</div>
         </div>
-        <div id="analysis_container">
+        <div id="analysis_container" hidden>
             <div class="image-wrapper">
                 <div class="no-image" id="img_result">
-                    <img />
+                    <img id="imageSrc" hidden/>
+                    <canvas id="canvasOutput"></canvas>
                 </div>
             </div>
             <div class="results-wapper">
                 <div id="result-message"></div>
-                <div id="label-container"></div>
+                
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_inline_share_toolbox"></div>
+            
             </div>
         </div>
-
-        <script src="./js/script.js"></script>
-        <script src="./js/face_detection.js"></script>
-        <script src="./js/face_analyzation.js"></script>
-        <script type="module" src="./js/module.js"></script>
     </body>
+
+    <script src="./js/script.js"></script>
+    <script src="./js/face_analyzation.js"></script>
+    
+    <script async src="https://docs.opencv.org/4.5.2/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8.3/dist/teachablemachine-image.min.js"></script>
 </html>

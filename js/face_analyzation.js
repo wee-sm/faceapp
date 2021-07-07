@@ -4,25 +4,14 @@
 const teachablemachine_URL = 'https://teachablemachine.withgoogle.com/models/6saBpDCpV/';
 const modelURL = teachablemachine_URL + 'model.json';
 const metadataURL = teachablemachine_URL + 'metadata.json';
-const labelContainer = document.getElementById('label-container');
 const messageContainer =  document.getElementById('result-message');
 let model, maxPredictions;
 
-async function faceAnalyzation_init(imageURL) {
-    console.log(tf)
-    console.log(tmImage)
-    // Firstly: clear previous results
+async function faceAnalyzation_predict(predictImage) {
     messageContainer.innerHTML = "";
-    labelContainer.innerHTML = "";
-    // Secondly: set the image
-    var predictImage = new Image();
-    predictImage.setAttribute('src', imageURL);
-    // Thirdly: load tmImage
+    
     model = await tmImage.load(modelURL, metadataURL);
-    return predict(predictImage);
-}
-
-async function predict(predictImage) {
+    
     var prediction = await model.predict(predictImage, false);
     prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
 
@@ -33,19 +22,11 @@ async function predict(predictImage) {
     }
     prediction_height = Math.round((prediction_height - 5) * 100) / 100;
     var resultMessage =
-        '당신은 ' +
+        '당신은</br>' +
         prediction_height +
-        'cm정도 되게 생기셨습니다. ' +
+        'cm정도</br>되게 생기셨습니다. </br>' +
         randomEmoji(prediction_height);
     messageContainer.innerHTML = resultMessage;
-    
-    // maxPredictions = model.getTotalClasses();
-    maxPredictions = 3;
-    for (let i = 0; i < maxPredictions; i++) {
-        labelContainer.appendChild(document.createElement('div'));
-        labelContainer.childNodes[i].innerHTML =
-            parseInt(prediction[i].className) - 5 + ': ' + prediction[i].probability.toFixed(2);
-    }
 }
 
 function randomEmoji(height) {
